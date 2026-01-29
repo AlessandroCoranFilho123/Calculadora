@@ -5,6 +5,7 @@
   --text-color-light: #0d1117;
   --bg-color-container-dark: #2d3642;
   --text-color-h1-dark: #c9d1d9;
+  --: ;
 }
 
 body {
@@ -83,6 +84,14 @@ button {
   gap: 10px;
 }
 
+.dark-mode .botoes button:hover {
+  background-color: #8a96a6;
+}
+
+.light-mode .botoes button:hover {
+  background-color: #8a96a6;
+}
+
 .dark-mode {
   background-color: var(--bg-color-dark);
   color: var(--text-color-dark);
@@ -107,8 +116,4 @@ button {
 
 button:hover {
   background-color: chocolate;
-}
-
-button:active {
-  background-color: #052d58;
 }
