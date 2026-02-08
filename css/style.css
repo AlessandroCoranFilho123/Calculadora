@@ -1,6 +1,6 @@
 :root {
   --bg-color-dark: #0d1117;
-  --bg-color-light: #ffffff;
+  --bg-color-light: #ebebeb;
   --text-color-dark: #ffffff;
   --text-color-light: #0d1117;
   --bg-color-container-dark: #2d3642;
@@ -42,10 +42,10 @@ button {
   max-width: 400px;
   width: 100%;
   margin: 50px auto;
-  background-color: #e8e8e8;
+  background-color: #cfcfcf;
   padding: 20px;
   border-radius: 10px;
-  border: 1px solid rgb(199, 199, 199);
+  border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
