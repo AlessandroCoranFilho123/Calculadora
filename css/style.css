@@ -1,11 +1,10 @@
 :root {
   --bg-color-dark: #0d1117;
-  --bg-color-light: #ebebeb;
+  --bg-color-light: #dddddd;
   --text-color-dark: #ffffff;
   --text-color-light: #0d1117;
   --bg-color-container-dark: #2d3642;
   --text-color-h1-dark: #c9d1d9;
-  --: ;
 }
 
 body {
@@ -30,19 +29,20 @@ h1 {
 
 button {
   padding: 15px;
-  font-size: 1.2em;
+  font-size: 20px;
   border-radius: 5px;
   background-color: #6f7f8f;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
+  border: none;
 }
 
 .container {
   max-width: 400px;
   width: 100%;
   margin: 50px auto;
-  background-color: #cfcfcf;
+  background-color: #cececb;
   padding: 20px;
   border-radius: 10px;
   border: none;
@@ -84,17 +84,30 @@ button {
   gap: 10px;
 }
 
+.dark-mode {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+.light-mode {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+}
+
 .dark-mode .botoes button:hover {
   background-color: #8a96a6;
+}
+
+.dark-mode .botoes button:active {
+  background-color: #0257c5;
 }
 
 .light-mode .botoes button:hover {
   background-color: #8a96a6;
 }
 
-.dark-mode {
-  background-color: var(--bg-color-dark);
-  color: var(--text-color-dark);
+.light-mode .botoes button:active {
+  background-color: #0257c5;
 }
 
 .dark-mode .container {
@@ -107,13 +120,4 @@ button {
 
 .dark-mode #mode-toggle {
   background-color: #2d3642;
-}
-
-.light-mode {
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
-}
-
-button:hover {
-  background-color: chocolate;
 }
