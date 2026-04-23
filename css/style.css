@@ -1,123 +1,157 @@
 :root {
-  --bg-color-dark: #0d1117;
-  --bg-color-light: #dddddd;
-  --text-color-dark: #ffffff;
-  --text-color-light: #0d1117;
-  --bg-color-container-dark: #2d3642;
-  --text-color-h1-dark: #c9d1d9;
+  --bg-dark: #0f172a;
+  --container-dark: #1e293b;
+  --text-dark: #f8fafc;
+  --btn-dark: #334155;
+  --btn-hover-dark: #475569;
+  --bg-light: #f1f5f9;
+  --container-light: #ffffff;
+  --text-light: #0f172a;
+  --btn-light: #e2e8f0;
+  --btn-hover-light: #cbd5e1;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: var(--bg-color-dark);
-  color: var(--text-color-dark);
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background 0.3s ease;
 }
 
-h1 {
-  margin-bottom: 20px;
-  color: #091829;
-  align-items: top;
-  text-align: center;
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
 }
 
-button {
-  padding: 15px;
-  font-size: 20px;
-  border-radius: 5px;
-  background-color: #6f7f8f;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s ease;
-  border: none;
+body.light-mode {
+  background-color: var(--bg-light);
+  color: var(--text-light);
 }
 
 .container {
-  max-width: 400px;
-  width: 100%;
-  margin: 50px auto;
-  background-color: #cececb;
-  padding: 20px;
-  border-radius: 10px;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 22.5rem;  /* 360px */
+  padding: 1.5rem; /* 24px */
+  border-radius: 1rem; /* 16px */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
 }
 
-#mode-toggle {
-  position: fixed;
-  top: 14px;
-  right: 20px;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #c7c4c4;
-  padding: 10px;
-  z-index: 10;
+.dark-mode .container {
+  background-color: var(--container-dark);
 }
 
-.calculadora {
-  display: flex;
-  flex-direction: column;
+.light-mode .container {
+  background-color: var(--container-light);
+}
+
+h1 {
+  font-size: 1.5rem; /* 24px */
+  margin-bottom: 1.5rem; /* 24px */
+  text-align: center;
+  font-weight: 600;
 }
 
 #display {
   width: 100%;
-  padding: 10px;
-  font-size: 1.5em;
+  padding: 1rem; /* 16px */
+  font-size: 2rem; /* 32px */
   text-align: right;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-sizing: border-box;
-  background-color: rgb(194, 194, 194);
+  margin-bottom: 1.25rem; /* 20px */
+  border-radius: 0.5rem; /* 8px */
+  border: 2px solid transparent;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: inherit;
+  outline: none;
+}
+
+.dark-mode #display {
+  background-color: #0f172a;
+  border-color: #334155;
+}
+
+.light-mode #display {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
 }
 
 .botoes {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 0.75rem; /* 12px */
 }
 
-.dark-mode {
-  background-color: var(--bg-color-dark);
-  color: var(--text-color-dark);
+button {
+  padding: 1rem 0.5rem; /* 16px 8px */
+  font-size: 1.25rem; /* 20px */
+  border-radius: 0.5rem; /* 8px */
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-.light-mode {
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
+.dark-mode button {
+  background-color: var(--btn-dark);
+  color: var(--text-dark);
 }
 
-.dark-mode .botoes button:hover {
-  background-color: #8a96a6;
+.dark-mode button:hover {
+  background-color: var(--btn-hover-dark);
 }
 
-.dark-mode .botoes button:active {
-  background-color: #0257c5;
+.light-mode button {
+  background-color: var(--btn-light);
+  color: var(--text-light);
 }
 
-.light-mode .botoes button:hover {
-  background-color: #8a96a6;
+.light-mode button:hover {
+  background-color: var(--btn-hover-light);
 }
 
-.light-mode .botoes button:active {
-  background-color: #0257c5;
+button[onclick*="calculate"] {
+  background-color: var(--accent) !important;
+  color: white !important;
+  grid-column: span 2;
 }
 
-.dark-mode .container {
-  background-color: var(--bg-color-container-dark);
+button[onclick*="calculate"]:hover {
+  background-color: var(--accent-hover) !important;
 }
 
-.dark-mode h1 {
-  color: var(--text-color-h1-dark);
+#mode-toggle {
+  position: fixed;
+  top: 1.25rem; /* 20px */
+  right: 1.25rem; /* 20px */
+  padding: 0.75rem; /* 12px */
+  border-radius: 50%;
+  width: 3rem; /* 48px */
+  height: 3rem; /* 48px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.dark-mode #mode-toggle {
-  background-color: #2d3642;
+@media (max-width: 350px) {
+  .container {
+    padding: 1rem; /* 16px */
+  }
+
+
+  button {
+    padding: 0.75rem 0.25rem; /* 12px 4px */
+    font-size: 1.1rem; /* 18px */
+  }
 }

@@ -1,17 +1,26 @@
 const display = document.getElementById("display");
+const body = document.body;
+const modeToggle = document.getElementById("mode-toggle");
+let resetOnNextInput = false;
 
-display.addEventListener("keypress", function (event) {
+body.classList.add("dark-mode");
+
+display.addEventListener("keypress", (event) => {
   const allowedKeys = "0123456789.+-*/";
   if (!allowedKeys.includes(event.key)) {
     event.preventDefault();
   }
 });
 
-display.addEventListener("input", function () {
-  display.value = display.value.replace("/[^0-9.+-*/]/g,");
+display.addEventListener("input", () => {
+  display.value = display.value.replace(/[^0-9.+-/*]/g, "");
 });
 
 function appendValue(value) {
+  if (resetOnNextInput) {
+    display.value = "";
+    resetOnNextInput = false;
+  }
   display.value += value;
 }
 
@@ -25,7 +34,10 @@ function deleteLast() {
 
 function calculate() {
   try {
-    display.value = eval(display.value);
+    const result = eval(display.value);
+    
+    if (result === undefined || isNaN(result)) throw new Error();
+    display.value = Number.isInteger(result) ? result : result.toFixed(4).replace(/\.?0+$/, "");
     resetOnNextInput = true;
   } catch {
     display.value = "Erro";
@@ -33,29 +45,14 @@ function calculate() {
   }
 }
 
-let resetOnNextInput = false;
-
-function appendValue(value) {
-  if (resetOnNextInput) {
-    display.value = "";
-    resetOnNextInput = false;
-  }
-  display.value += value;
-}
-
-const modeToggle = document.getElementById("mode-toggle");
-const body = document.body;
-
 modeToggle.addEventListener("click", () => {
-  if (body.classList.contains("dark-mode")) {
-    body.classList.remove("dark-mode");
-    body.classList.add("light-mode");
+  const isDark = body.classList.contains("dark-mode");
+  
+  if (isDark) {
+    body.classList.replace("dark-mode", "light-mode");
     modeToggle.textContent = "🌑";
   } else {
-    body.classList.remove("light-mode");
-    body.classList.add("dark-mode");
+    body.classList.replace("light-mode", "dark-mode");
     modeToggle.textContent = "☀️";
   }
 });
-
-body.classList.add("dark-mode");
